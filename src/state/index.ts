@@ -14,12 +14,12 @@ export type UserSearchStore = {
     userData?: Partial<UserQueryResult>
 };
 
-export const userSearchStore = proxy<UserSearchStore>({
+export const store = proxy<UserSearchStore>({
     userFilter: '',
-    showUsersGrid:true,
-    users: userResponse,
+    showUsersGrid: true,
+    users: userResponse.items,
 });
 
-const unsub = devtools(userSearchStore, 'Github User Search')
+const unsub = devtools(store, 'Github User Search')
 
-export default userSearchStore;
+export default store;

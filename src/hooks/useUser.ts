@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query'
 import moment from 'moment';
-import { useEffect } from 'react';
-import { useAPIClient, useInitAPIClient } from '../store/apiClientStore';
+import { useAPIClient, useInitAPIClient } from '../state/apiClientStore';
 import { Endpoints, OctokitResponse } from '@octokit/types';
+import { useDebouncedValue } from '../utils/useDebouncedValue';
 
 export type User = Endpoints["GET /users/{username}"]["response"]["data"];
 export type Repos = Endpoints["GET /users/{username}/repos"]["response"]["data"];
@@ -20,8 +20,10 @@ export const useUser = (username?: string) => {
     useInitAPIClient();
 
     const client = useAPIClient();
+
+    const debouncedUsername = useDebouncedValue(username, 500);
     
-    const queriedData = useQuery<Partial<UserQueryResult>, string>(['user', username], async () => {
+    const queriedData = useQuery<Partial<UserQueryResult>, string>(['user', debouncedUsername], async () => {
         if(!username) {
             return null;
         }
@@ -38,12 +40,17 @@ export const useUser = (username?: string) => {
             username
         }))?.data;
  
-        return {
+        const result = {
             user,
             repos,
             followers
         };
+
+        console.log("User", result);
+
+        return result;
     }, {
+        
         cacheTime: moment.duration({'days' : 2}).asMilliseconds(),
         staleTime: moment.duration({'minutes' : 45}).asMilliseconds(),
     });

@@ -4,11 +4,15 @@ import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import './index.css'
 import { Users, UserDetail } from './pages';
 import { QueryProvider } from './hooks/useStoredQueryData';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient()
 
 ReactDOM.render(
   <React.StrictMode>
-    <QueryProvider/>
-    <Router>
+    <QueryClientProvider client={queryClient}>
+      <QueryProvider />
+      <Router>
         <Switch>
           <Route path="/" exact>
             <Users />
@@ -20,8 +24,9 @@ ReactDOM.render(
             <UserDetail />
           </Route>
         </Switch>
-    </Router>
-  
+      </Router>
+    </QueryClientProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 )

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSnapshot } from 'valtio';
 
-import store from '../store';
+import store from '../state';
 import { useUser } from './useUser';
 import { Users, useUsersSearch } from './useUsersSearch';
 

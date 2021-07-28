@@ -1,7 +1,7 @@
 import { proxy } from 'valtio';
 import { Octokit } from '@octokit/rest';
 import type { Octokit as OctokitCore } from 'octokit'
-import { throttling } from '@octokit/plugin-throttling';
+// import { throttling } from '@octokit/plugin-throttling';
 import * as Q from 'q';
 import { useEffect } from 'react';
 
@@ -28,7 +28,7 @@ const initAPIClient = () => {
     const client = new Octokit({ auth: token }) as OctokitFull;
     // Argh Busted Octakit
     // https://github.com/octokit/plugin-throttling.js/#usage
-    (client as any).plugin(throttling)
+    // (client as any).plugin(throttling)
 
     apiClientStore.clientDeferred.resolve(client);
     apiClientStore.clientReady = true;
