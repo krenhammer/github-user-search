@@ -2,23 +2,23 @@ import { useQuery } from 'react-query'
 import moment from 'moment';
 import { useEffect } from 'react';
 import { useAPIClient, useInitAPIClient } from '../store/apiClientStore';
-import store from '../store/store'
 import { Endpoints, OctokitResponse } from '@octokit/types';
-import { useSnapshot } from 'valtio';
 
-export type UsersResponse = OctokitResponse<Endpoints["GET /search/users"]["response"]["data"]>;
+// import type Unpacked from '../utils/unpackType';
 
-export const useApi = () => {
+export type Users = Endpoints["GET /search/users"]["response"]["data"];
+
+export type UsersResponse = OctokitResponse<Users>;
+
+export const useUsersSearch = (filter: string) => {
     useInitAPIClient();
 
     const client = useAPIClient();
-
-    const snap = useSnapshot(store);
     
-    const queriedData = useQuery<UsersResponse, string>(['users', snap.userFilter], async () => {
-        const users = await client?.search.users({
-            q: store.userFilter
-        }) as UsersResponse;
+    const queriedData = useQuery<Users, string>(['users', filter], async () => {
+        const users = (await client?.search.users({
+            q: filter
+        }))?.data as Users;
 
         return users;
     }, {

@@ -2,11 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import './index.css'
-// import App from './App'
 import { Users, UserDetail } from './pages';
+import { QueryProvider } from './hooks/useStoredQueryData';
 
 ReactDOM.render(
   <React.StrictMode>
+    <QueryProvider/>
     <Router>
         <Switch>
           <Route path="/" exact>
