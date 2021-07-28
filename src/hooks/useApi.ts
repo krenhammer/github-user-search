@@ -15,7 +15,7 @@ export const useApi = () => {
 
     const snap = useSnapshot(store);
     
-    const queriedData = useQuery<UsersResponse, string>(snap.userFilter, async () => {
+    const queriedData = useQuery<UsersResponse, string>(['users', snap.userFilter], async () => {
         const users = await client?.search.users({
             q: store.userFilter
         }) as UsersResponse;
