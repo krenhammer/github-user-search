@@ -12,7 +12,7 @@ export type UserQueryResult = {
     user: User,
     repos: Repos,
     followers: Followers
-}
+} | null;
 
 export type UserResponse = OctokitResponse<User>;
 
@@ -32,17 +32,17 @@ export const useUser = (username?: string) => {
 
         const repos = (await client?.repos.listForUser({
             username
-        }));
+        }))?.data;
 
         const followers = (await client?.users.listFollowersForUser({
             username
-        }));
-
+        }))?.data;
+ 
         return {
             user,
             repos,
             followers
-        } as any;
+        };
     }, {
         cacheTime: moment.duration({'days' : 2}).asMilliseconds(),
         staleTime: moment.duration({'minutes' : 45}).asMilliseconds(),

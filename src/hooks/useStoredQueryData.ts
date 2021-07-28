@@ -20,7 +20,7 @@ export const useStoredQueryData = () => {
     }, [users])
 }
 
-export const QueryProvider: React.FC<any> = () => {
+export const QueryProvider: React.FC = () => {
     useStoredQueryData();
 
     return null;
