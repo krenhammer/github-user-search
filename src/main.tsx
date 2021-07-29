@@ -17,7 +17,7 @@ ReactDOM.render(
           <Route path="/" exact>
             <Users />
           </Route>
-          <Route path="/search/:query?">
+          <Route path="/search/:query/:page?">
             <Users />
           </Route>
           <Route path="/user/:username?">
