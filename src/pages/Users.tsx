@@ -30,7 +30,7 @@ export const Users: React.FC = () => {
 
     return (
         <Content>
-            <Title><FaGithub /> User Search</Title>
+            {/* <Title><FaGithub /> User Search</Title> */}
             <SearchBar />
             <section>
                 {snap.pageCount > 1 ? <Pagination /> : null}

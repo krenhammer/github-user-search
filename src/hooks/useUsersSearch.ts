@@ -31,8 +31,16 @@ export const useUsersSearch = (filter: string, page = 1, resultsPerPage = RESULT
     const debouncedPage = useDebouncedValue(page, 500);
     
     const queriedData = useQuery<PaginatedUsers, string>(['users', debouncedFilter, debouncedPage], async () => {
+        if(!filter) {
+            return {
+                users: [],
+                pageCount: 0,
+                per_page: resultsPerPage
+            };
+        }
+
         const usersResponse = (await client?.search.users({
-            q: filter,
+            q: filter || ' ',
             per_page: resultsPerPage,
             page
         }));

@@ -19,6 +19,8 @@ export const useStoredQueryData = () => {
         const data = (users.data as PaginatedUsers)
 
         if (!data) {
+            store.pageCount = 0;
+            store.users = [];
             return;
         }
 

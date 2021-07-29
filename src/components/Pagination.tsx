@@ -19,6 +19,7 @@ export const Pagination: React.FC = () => {
 
     const snap = useSnapshot(store);
     let pageCount = snap.pageCount;
+    const caretSize = 25;
 
     const pageBack = () => {
         store.page = store.page - 1 > 0 ? store.page - 1 : 1;
@@ -32,16 +33,16 @@ export const Pagination: React.FC = () => {
 
     
     return (
-        <div className="flex flex-col items-center my-12">
+        <div className="flex flex-col items-center mb-10">
             <div className="flex text-gray-700">
-                <FaCaretLeft onClick={() => pageBack()}/>
+                <FaCaretLeft size={caretSize} onClick={() => pageBack()}/>
                 {/* <div className="flex h-8 font-medium ">
                     {_.times(snap.pageCount, (count) => (
                        <PageLink $isSelected={snap.page == count }>{count}</PageLink>
                     ))} 
                 </div> */}
                 <p>{store.page} / {store.pageCount}</p>
-                <FaCaretRight onClick={() => pageForward()}/>
+                <FaCaretRight size={caretSize} onClick={() => pageForward()}/>
 
             </div>
         </div>
