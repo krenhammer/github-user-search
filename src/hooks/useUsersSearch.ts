@@ -9,26 +9,50 @@ import { useDebouncedValue } from '../utils/useDebouncedValue';
 
 export type Users = Endpoints["GET /search/users"]["response"]["data"]["items"];
 
+export type PaginatedUsers = {
+    users: Users,
+    pageCount: number,
+    resultsPerPage: number
+};
+
 export type UsersResponse = OctokitResponse<Users>;
 
-export const useUsersSearch = (filter: string) => {
+const RESULTS_PER_PAGE = 20;
+
+export const useUsersSearch = (filter: string, page = 1, resultsPerPage = RESULTS_PER_PAGE) => {
     useInitAPIClient();
 
     const client = useAPIClient();
 
     const debouncedFilter = useDebouncedValue(filter, 500);
+
+    // Debounce page to work around https://github.com/tannerlinsley/react-query/issues/2187
+    // Also see https://github.com/tannerlinsley/react-query/issues/2434
+    const debouncedPage = useDebouncedValue(page, 500);
     
-    const queriedData = useQuery<Users, string>(['users', debouncedFilter], async () => {
-        const users = (await client?.search.users({
-            q: filter
-        }))?.data.items as Users;
+    const queriedData = useQuery<PaginatedUsers, string>(['users', debouncedFilter, debouncedPage], async () => {
+        const usersResponse = (await client?.search.users({
+            q: filter,
+            per_page: resultsPerPage,
+            page
+        }));
+
+        const pageCount = Math.ceil(usersResponse ? (usersResponse.data.total_count > 1000 ? 1000 : usersResponse.data.total_count) / RESULTS_PER_PAGE : 1);
+
+        const users = usersResponse?.data.items as Users;
 
         console.log("Users", users)
 
-        return users;
+        return {
+            users,
+            pageCount,
+            resultsPerPage
+        };
     }, {
-        cacheTime: moment.duration({'days' : 2}).asMilliseconds(),
-        staleTime: moment.duration({'minutes' : 45}).asMilliseconds(),
+        // keepPreviousData: true,
+        retry: false,
+        cacheTime: 1000,
+        // staleTime: moment.duration({'minutes' : 45}).asMilliseconds(),
     });
 
     return queriedData;
