@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 import tw from "tailwind-styled-components"
 import { useSnapshot } from "valtio";
+import { useUserSearchURLState } from '../hooks/useURLState';
 
 import store from "../state";
 import {SearchBar, Pagination} from "../components";
@@ -27,6 +28,8 @@ const Avatar = tw.img`
 export const Users: React.FC = () => {
 
     const snap = useSnapshot(store);
+
+    useUserSearchURLState();
 
     return (
         <Content>
