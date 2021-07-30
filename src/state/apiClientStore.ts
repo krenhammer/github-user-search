@@ -28,9 +28,6 @@ const initAPIClient = () => {
     }
 
     const client = new Octokit({ auth: token }) as OctokitFull;
-    // Argh Busted Octakit
-    // https://github.com/octokit/plugin-throttling.js/#usage
-    // (client as any).plugin(throttling)
 
     apiClientStore.clientDeferred.resolve(client);
     apiClientStore.clientReady = true;

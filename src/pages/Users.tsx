@@ -21,7 +21,7 @@ const GridList = tw.div<GridListProps>`
     grid gap-9 w-full mb-5
 `
 
-interface AvatarProps {
+export interface AvatarProps {
     $size?: 'sm'|'md'|'lg'
 }
 export const Avatar = tw.img<AvatarProps>`

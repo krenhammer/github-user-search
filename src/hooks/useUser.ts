@@ -3,9 +3,11 @@ import moment from 'moment';
 import { useAPIClient, useInitAPIClient } from '../state/apiClientStore';
 import { Endpoints, OctokitResponse } from '@octokit/types';
 import { useDebouncedValue } from '../utils/useDebouncedValue';
+import type UnpackType from '../utils/unpackType'
 
 export type User = Endpoints["GET /users/{username}"]["response"]["data"];
 export type Repos = Endpoints["GET /users/{username}/repos"]["response"]["data"];
+export type Repo = UnpackType<Endpoints["GET /users/{username}/repos"]["response"]["data"]>;
 export type Followers = Endpoints["GET /users/{username}/followers"]["response"]["data"];
 export type Following = Endpoints["GET /users/{username}/following"]["response"]["data"];
 
