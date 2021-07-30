@@ -1,8 +1,18 @@
 import React, { ChangeEvent } from "react";
 import { FaSearch, FaGithub} from "react-icons/fa";
+import tw from "tailwind-styled-components";
 import { useSnapshot } from "valtio";
 
 import store from "../state";
+
+interface GithubLogoProps {
+    $isLoading: boolean
+}
+
+const GithubLogo = tw.a<GithubLogoProps>`
+    ${(p) => (p.$isLoading ? "animate-spin" : "")}
+    text-gray-400
+`
 
 export const SearchBar: React.FC = () => {
 
@@ -16,7 +26,7 @@ export const SearchBar: React.FC = () => {
     
     return (
         <div className="flex flex-row space-x-6 m-5">
-            <a className="text-gray-400" href="https://github.com" target="_blank"><FaGithub size="40"/></a>
+            <GithubLogo $isLoading={!(snap.users && snap.users.length) && !!snap.userFilter.length} href="https://github.com" target="_blank"><FaGithub size="40"/></GithubLogo>
                 <div className="flex flex-row space-x-6" >
                     <div className="relative text-gray-600 ">
                         <input className="border-2 border-gray-300 bg-white h-10 px-5 pr-16
