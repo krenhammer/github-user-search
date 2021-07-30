@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { FaArrowLeft,FaGithub, FaUserFriends } from "react-icons/fa";
+import { FaArrowLeft,FaGithub, FaUserFriends, FaEllipsisH } from "react-icons/fa";
 import { GiFootsteps } from "react-icons/gi";
 import { useSnapshot } from "valtio";
 import ReactTooltip from 'react-tooltip';
+import * as _ from 'lodash';
 
 import { Avatar, Content } from ".";
 import { UserDetailParams, useUserDetailURLState } from "../hooks/useURLState";
@@ -11,6 +12,7 @@ import { Followers, Following, Repos, User } from "../hooks/useUser";
 import store from "../state";
 import { useState } from "react";
 
+const FOLLOWERS_NUM = 10;
 
 export const UserDetail: React.FC = () => {
 
@@ -59,18 +61,26 @@ export const UserDetail: React.FC = () => {
                                 className="rounded-xl border-gray-400 hover:border-black hover:text-black text-gray-500 p-2 border-2">
                                     {showFollowers ? <GiFootsteps size="30"  />:<FaUserFriends size="30" />}
                         </button>
+                        
                         <div className="overflow-x-auto flex flex-row space-x-2 items-center justify-center">
-                            {showFollowers && followers && followers.map((follower, index) => (
+                            {showFollowers && followers && _.take(followers, FOLLOWERS_NUM).map((follower, index) => (
                                 <a href={follower?.html_url as string} data-tip={follower?.name as string} target="_blank" className="cursor-pointer flex-none" key={index} >
                                     <Avatar  $size="sm" alt={follower?.name as string} src={follower?.avatar_url as string} />
                                 </a>
                             ))}
-                            {!showFollowers &&following && following.map((follow, index) => (
+                            {!showFollowers &&following && _.take(following, FOLLOWERS_NUM).map((follow, index) => (
                                 <a href={follow?.html_url as string} data-tip={follow?.name as string} target="_blank" className="cursor-pointer flex-none" key={index} >
                                     <Avatar  $size="sm" alt={follow?.name as string} src={follow?.avatar_url as string} />
                                 </a>
                             ))}
                         </div>
+                        <a href={`https://github.com/${user?.login}?tab=${showFollowers? 'followers':'following'}`} 
+                            target="_blank"
+                                data-tip={!showFollowers ? 'Show More Following' : 'Show More Followers'} 
+                                className="rounded-xl border-gray-400 hover:border-black hover:text-black text-gray-500 p-2 border-2 ">
+                                    {/* {showFollowers ? <GiFootsteps size="30"  />:<FaUserFriends size="30" />} */}
+                                    <FaEllipsisH size={30}></FaEllipsisH>
+                            </a>
                     </div>
                     <div className="flex flex-col items-center justify-center mt-10">
                         <div className="flex flex-col space-y-3">

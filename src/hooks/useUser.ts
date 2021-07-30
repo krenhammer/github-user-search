@@ -40,7 +40,7 @@ export const useUser = (username?: string) => {
         }))?.data;
 
         const followers = (await client?.users.listFollowersForUser({
-            username
+            username,
         }))?.data;
 
         const following = (await client?.users.listFollowingForUser({
