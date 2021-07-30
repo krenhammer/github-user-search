@@ -63,6 +63,12 @@ export const useUserSearchURLState = () => {
     // })()}, [])
 
     const refreshURL = () => {
+
+        if(store.userFilter.length < 1) {
+            history.push(`/`);
+            return;
+        }
+
         history.push(`/search/${store.userFilter}/${store.page}`);
     };
 
