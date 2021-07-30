@@ -7,11 +7,13 @@ import { useDebouncedValue } from '../utils/useDebouncedValue';
 export type User = Endpoints["GET /users/{username}"]["response"]["data"];
 export type Repos = Endpoints["GET /users/{username}/repos"]["response"]["data"];
 export type Followers = Endpoints["GET /users/{username}/followers"]["response"]["data"];
+export type Following = Endpoints["GET /users/{username}/following"]["response"]["data"];
 
 export type UserQueryResult = {
     user: User,
     repos: Repos,
-    followers: Followers
+    followers: Followers,
+    following: Following
 } | null;
 
 export type UserResponse = OctokitResponse<User>;
@@ -22,10 +24,10 @@ export const useUser = (username?: string) => {
     const client = useAPIClient();
 
     const debouncedUsername = useDebouncedValue(username, 500);
-    
+
     const queriedData = useQuery<Partial<UserQueryResult>, string>(['user', debouncedUsername], async () => {
 
-        if(!username) {
+        if (!username) {
             return null;
         }
 
@@ -40,20 +42,23 @@ export const useUser = (username?: string) => {
         const followers = (await client?.users.listFollowersForUser({
             username
         }))?.data;
- 
+
+        const following = (await client?.users.listFollowingForUser({
+            username
+        }))?.data;
+
         const result = {
             user,
             repos,
-            followers
+            followers,
+            following
         };
 
         console.log("User", result);
 
         return result;
     }, {
-        
-        // cacheTime: moment.duration({'days' : 2}).asMilliseconds(),
-        // staleTime: moment.duration({'minutes' : 45}).asMilliseconds(),
+
     });
 
     return queriedData;
