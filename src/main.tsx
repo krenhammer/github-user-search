@@ -5,11 +5,13 @@ import './index.css'
 import { Users, UserDetail } from './pages';
 import { QueryProvider } from './hooks/useStoredQueryData';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import ReactTooltip from 'react-tooltip';
 
 const queryClient = new QueryClient()
 
 ReactDOM.render(
   <React.StrictMode>
+    
     <QueryClientProvider client={queryClient}>
       <QueryProvider />
       <Router>

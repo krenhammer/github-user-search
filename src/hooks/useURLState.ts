@@ -20,6 +20,7 @@ export const useUserDetailURLState = () => {
     const [debouncedUsername] = useDebouncedValue(params.username, 200);
 
     useEffect(() => {
+        // console.log("Set Store Username", debouncedUsername)
         store.username = debouncedUsername;
     }, [debouncedUsername]);
 

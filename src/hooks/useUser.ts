@@ -24,6 +24,7 @@ export const useUser = (username?: string) => {
     const debouncedUsername = useDebouncedValue(username, 500);
     
     const queriedData = useQuery<Partial<UserQueryResult>, string>(['user', debouncedUsername], async () => {
+
         if(!username) {
             return null;
         }
@@ -51,8 +52,8 @@ export const useUser = (username?: string) => {
         return result;
     }, {
         
-        cacheTime: moment.duration({'days' : 2}).asMilliseconds(),
-        staleTime: moment.duration({'minutes' : 45}).asMilliseconds(),
+        // cacheTime: moment.duration({'days' : 2}).asMilliseconds(),
+        // staleTime: moment.duration({'minutes' : 45}).asMilliseconds(),
     });
 
     return queriedData;
