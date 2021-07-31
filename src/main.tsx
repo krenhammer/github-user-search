@@ -51,9 +51,9 @@ ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ReactTooltip />
-      <TourWrapper />
       <QueryProvider />
       <Router>
+        <TourWrapper />
         <Switch>
           <Route path="/" exact>
             <Users />
