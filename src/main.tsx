@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
-import { Route, HashRouter as Router, Switch } from 'react-router-dom';
+import { Route, HashRouter as Router, Switch, useParams } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ReactTooltip from 'react-tooltip';
 import Tour from 'reactour'
@@ -27,6 +27,12 @@ const TourWrapper: React.FC = () => {
 
     setTourUpdate(Math.random().toString());
   }
+
+  const params = useParams();
+
+  useEffect(() => {
+    refreshTour();
+  }, [params]);
 
   useEffect(() => subscribe(store, refreshTour), []) 
 
