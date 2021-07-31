@@ -32,6 +32,7 @@ jobs:
         version: 6.0.2
     - run: 'pnpm install' 
     - run: 'pnpm build' 
+    - run: 'pwd && ls -la .'
     - uses: South-Paw/action-netlify-deploy@v1.2.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
