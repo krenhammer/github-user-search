@@ -15,6 +15,30 @@ import {tourSteps} from './tour'
 import store from './state';
 import delay from './utils/delay';
 
+import { registerSW } from 'virtual:pwa-register'
+
+const updateSW = registerSW({
+  onRegistered(r: any) {
+    r && setInterval(() => {
+      r.update()
+    }, 15 * 60 * 1000 /* 1 hour: timeout in milliseconds */)
+  },
+  onNeedRefresh() {
+    // show a prompt to user
+  },
+  onOfflineReady() {
+    // show a ready to work offline to user
+  },
+})
+
+const ServiceWorkerProvider: React.FC = () => {
+  useEffect(() => {
+    console.log("Register Service Worker", updateSW);
+    updateSW();
+  }, [])
+
+  return null;
+};
 
 const queryClient = new QueryClient()
 
@@ -57,6 +81,7 @@ ReactDOM.render(
       <QueryProvider />
       <ReactQueryDevtools initialIsOpen={false} />
       <Router>
+        <ServiceWorkerProvider />
         <TourWrapper />
         <Switch>
           <Route 
