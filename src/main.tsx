@@ -6,6 +6,7 @@ import ReactTooltip from 'react-tooltip';
 import Tour from 'reactour'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { useSnapshot, subscribe } from 'valtio';
+import loadable from '@loadable/component'
 
 import './index.css'
 import { Users, UserDetail } from './pages';
@@ -58,15 +59,16 @@ ReactDOM.render(
       <Router>
         <TourWrapper />
         <Switch>
-          <Route path="/" exact>
-            <Users />
-          </Route>
-          <Route path="/search/:query/:page?">
-            <Users />
-          </Route>
-          <Route path="/user/:username?">
-            <UserDetail />
-          </Route>
+          <Route 
+            path="/" 
+            component={loadable(() => import('./pages/Users'))} 
+            exact />
+          <Route 
+            path="/search/:query/:page?" 
+            component={loadable(() => import('./pages/Users'))} />
+          <Route 
+            path="/user/:username?" 
+            component={loadable(() => import('./pages/UserDetail'))} />
         </Switch>
       </Router>
     </QueryClientProvider>

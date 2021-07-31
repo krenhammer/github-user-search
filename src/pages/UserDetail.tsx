@@ -71,3 +71,5 @@ export const UserDetail: React.FC = () => {
         </Content>
     );
 }
+
+export default UserDetail;

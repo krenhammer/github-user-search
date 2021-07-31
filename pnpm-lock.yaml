@@ -1,12 +1,14 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@loadable/component': ^5.15.0
   '@octokit/core': ^3.5.1
   '@octokit/plugin-throttling': ^3.5.1
   '@octokit/rest': ^18.7.1
   '@octokit/types': ^6.21.1
   '@react-stately/searchfield': ^3.1.2
   '@tailwindcss/forms': ^0.3.3
+  '@types/loadable__component': ^5.13.4
   '@types/lodash': ^4.14.171
   '@types/q': ^1.5.5
   '@types/react': ^17.0.0
@@ -36,6 +38,7 @@ specifiers:
   vite: ^2.4.4
 
 dependencies:
+  '@loadable/component': 5.15.0_react@17.0.2
   '@octokit/core': 3.5.1
   '@octokit/plugin-throttling': 3.5.1_@octokit+core@3.5.1
   '@octokit/rest': 18.7.1
@@ -60,6 +63,7 @@ dependencies:
 devDependencies:
   '@octokit/types': 6.21.1
   '@tailwindcss/forms': 0.3.3_tailwindcss@2.2.7
+  '@types/loadable__component': 5.13.4
   '@types/lodash': 4.14.171
   '@types/q': 1.5.5
   '@types/react': 17.0.15
@@ -392,6 +396,18 @@ packages:
     resolution: {integrity: sha512-m5D+J1SIdWxXE5vRo8SYfs+8288FCQkdF9ibh5Cqv03pFtE/vORqGapxuP7CoxaHj+DnwKCKmS5MXkH6VUAAOg==}
     dependencies:
       '@babel/runtime': 7.14.8
+    dev: false
+
+  /@loadable/component/5.15.0_react@17.0.2:
+    resolution: {integrity: sha512-g63rQzypPOZi0BeGsK4ST2MYhsFR+i7bhL8k/McUoWDNMDuTTdUlQ2GACKxqh5sI/dNC/6nVoPrycMnSylnAgQ==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: '>=16.3.0'
+    dependencies:
+      '@babel/runtime': 7.14.8
+      hoist-non-react-statics: 3.3.2
+      react: 17.0.2
+      react-is: 16.13.1
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -1630,6 +1646,12 @@ packages:
     dependencies:
       '@types/node': 16.4.7
     dev: false
+
+  /@types/loadable__component/5.13.4:
+    resolution: {integrity: sha512-YhoCCxyuvP2XeZNbHbi8Wb9EMaUJuA2VGHxJffcQYrJKIKSkymJrhbzsf9y4zpTmr5pExAAEh5hbF628PAZ8Dg==}
+    dependencies:
+      '@types/react': 17.0.15
+    dev: true
 
   /@types/lodash/4.14.171:
     resolution: {integrity: sha512-7eQ2xYLLI/LsicL2nejW9Wyko3lcpN6O/z0ZLHrEQsg280zIdCv1t/0m6UtBjUHokCGBQ3gYTbHzDkZ1xOBwwg==}
