@@ -64,14 +64,6 @@ export const tourSteps = [
             store.userFilter='kren'
         },
     },
-    // {
-    //     selector: '[data-tut="tour-users"]',
-    //     content: 'Let\'s click one',
-    //     style: style,
-    //     action: () => {
-    //         location.href = '#/user/krenhammer'
-    //     },
-    // },
     {
         selector: '[data-tut="tour-user-avatar"]',
         content: 'Click here to go to the selected User\'s Github home page',
