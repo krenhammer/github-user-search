@@ -69,7 +69,7 @@ export const Pagination: React.FC = () => {
                     <FaCaretRight size={CARET_SIZE} />
                 </AccessibleCaret>
             </div>
-            <span data-tip="user count" data-tut="tour-total-users" className="text-gray-300 hover:text-gray-400">{currentCount} / {snap.totalUsersCount as number}</span>
+            <span aria-label="Number of Users" data-tip="Number of Users" data-tut="tour-total-users" className="text-gray-400 hover:text-gray-500">{currentCount} / {snap.totalUsersCount as number}</span>
         </Container>
     );
 }
