@@ -48,6 +48,12 @@ HINT: Click the [React Query Dev Tools](https://react-query.tanstack.com/devtool
 
 <img src="./assets/ReactQueryDevToolsButton.png" width="50">
 
+### Application Wide State Management
+The application utilizes [Valtio](https://github.com/pmndrs/valtio)'s change aware proxy state. In addition, [Valtio](https://github.com/pmndrs/valtio) supports the use of the standard [Redux Dev Tools](https://github.com/reduxjs/redux-devtools) browser extension to provide a formidable state inspection toolset. See [`state`](https://github.com/krenhammer/github-user-search/blob/main/src/state/index.ts) folder contents for more details.
+
+<img src="./assets/ValtioReduxDevTools.png" width="500">
+
+
 ### Custom Hooks
 Can be found in the [Hooks directory](https://github.com/krenhammer/github-user-search/tree/main/src/hooks).
 They duties are respectively:

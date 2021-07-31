@@ -4,7 +4,7 @@ import { Route, HashRouter as Router, Switch, useParams } from 'react-router-dom
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ReactTooltip from 'react-tooltip';
 import Tour from 'reactour'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { ReactQueryDevtools } from 'react-query/devtools/development'
 import { useSnapshot, subscribe } from 'valtio';
 import loadable from '@loadable/component'
 
