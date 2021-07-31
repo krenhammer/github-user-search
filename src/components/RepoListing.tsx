@@ -18,7 +18,7 @@ export const RepoListing: React.FC<RepoListingProps> = ({repos}) => {
 
     return (
         <Container data-tut="tour-repos" aria-label="Github Repositories">
-            <div className="flex flex-col flex-none mx-[10px] px-[10px] space-y-3">
+            <div className="flex flex-col flex-none md:mx-0 md:px-0 mx-[20px] px-[20px] space-y-3">
                 {repos && repos.map((repo, index) => (
                     <div key={index} className="group">
                         <div className="flex flex-row px-5">
