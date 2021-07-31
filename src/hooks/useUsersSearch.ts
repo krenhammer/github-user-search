@@ -25,11 +25,11 @@ export const useUsersSearch = (filter: string, page = 1, resultsPerPage = RESULT
 
     const client = useAPIClient();
 
-    const debouncedFilter = useDebouncedValue(filter, 500);
+    const [debouncedFilter] = useDebouncedValue(filter, 500);
 
     // Debounce page to work around https://github.com/tannerlinsley/react-query/issues/2187
     // Also see https://github.com/tannerlinsley/react-query/issues/2434
-    const debouncedPage = useDebouncedValue(page, 500);
+    const [debouncedPage] = useDebouncedValue(page, 500);
     
     const queriedData = useQuery<PaginatedUsers, string>(['users', debouncedFilter, debouncedPage], async () => {
         if(!filter) {
@@ -62,8 +62,8 @@ export const useUsersSearch = (filter: string, page = 1, resultsPerPage = RESULT
     }, {
         // keepPreviousData: true,
         retry: false,
-        cacheTime: 1000,
-        // staleTime: moment.duration({'minutes' : 45}).asMilliseconds(),
+        cacheTime: moment.duration({'minutes' : 60}).asMilliseconds(),
+        staleTime: moment.duration({'minutes' : 30}).asMilliseconds(),
     });
 
     return queriedData;

@@ -7,6 +7,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+footer.ReactQueryDevtools button {
+  filter: grayscale(1);
+}
+
+footer.ReactQueryDevtools button:hover {
+  filter: grayscale(0);
+}
+
 /* @layer base {
   :root {
     --color-text-base: 255, 255, 255;

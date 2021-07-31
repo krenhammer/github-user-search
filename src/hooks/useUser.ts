@@ -25,7 +25,7 @@ export const useUser = (username?: string) => {
 
     const client = useAPIClient();
 
-    const debouncedUsername = useDebouncedValue(username, 500);
+    const [debouncedUsername] = useDebouncedValue(username, 500);
 
     const queriedData = useQuery<Partial<UserQueryResult>, string>(['user', debouncedUsername], async () => {
 
@@ -60,7 +60,8 @@ export const useUser = (username?: string) => {
 
         return result;
     }, {
-
+        cacheTime: moment.duration({'minutes' : 60}).asMilliseconds(),
+        staleTime: moment.duration({'minutes' : 30}).asMilliseconds(),
     });
 
     return queriedData;

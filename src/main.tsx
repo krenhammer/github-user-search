@@ -4,14 +4,16 @@ import { Route, HashRouter as Router, Switch, useParams } from 'react-router-dom
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ReactTooltip from 'react-tooltip';
 import Tour from 'reactour'
-import delay from './utils/delay';
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { useSnapshot, subscribe } from 'valtio';
 
 import './index.css'
 import { Users, UserDetail } from './pages';
 import { QueryProvider } from './hooks/useStoredQueryData';
 import {tourSteps} from './tour'
 import store from './state';
-import { useSnapshot, subscribe } from 'valtio';
+import delay from './utils/delay';
+
 
 const queryClient = new QueryClient()
 
@@ -52,6 +54,7 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <ReactTooltip />
       <QueryProvider />
+      <ReactQueryDevtools initialIsOpen={false} />
       <Router>
         <TourWrapper />
         <Switch>
