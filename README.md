@@ -18,7 +18,7 @@ Additionally, both scripts can be run simultaneously using the [`merge-deploy` `
 
 
 ### GitHub Actions Deployment
-The app uses GitHub Actions to enable a continuous integration workflow for deployment to [Netlify](https://sk-ghusersearch.netlify.app/).
+The app uses [GitHub Actions](https://github.com/krenhammer/github-user-search/actions) to enable a continuous integration workflow for deployment to [Netlify](https://sk-ghusersearch.netlify.app/).
 
 Here is an overview of that process:
 - Checkout code from this [repo](https://github.com/krenhammer/github-user-search).

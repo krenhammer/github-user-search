@@ -59,7 +59,7 @@ export const SearchBar: React.FC = () => {
     return (
         <Container>
             <GithubLogo aria-label="Link to GitHub" rel="noreferrer" data-tut="tour-repo" $isLoading={!(snap.users && snap.users.length) && !!snap.userFilter.length} 
-                href="https://github.com" target="_blank"><FaGithub size="40" /></GithubLogo>
+                href="https://github.com/krenhammer/github-user-search" target="_blank"><FaGithub size="40" /></GithubLogo>
             <div className="flex flex-row space-x-6" >
                 <div className="relative text-gray-600 ">
                     <AccessibleSearchInput 
