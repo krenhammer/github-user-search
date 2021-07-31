@@ -15,10 +15,10 @@ interface RepoListingProps {
 export const RepoListing: React.FC<RepoListingProps> = ({repos}) => {
 
     return (
-        <Container>
+        <Container data-tut="tour-repos">
             <div className="flex flex-col space-y-3">
                 {repos && repos.map((repo, index) => (
-                    <div className="group">
+                    <div key={index} className="group">
                         <div className="flex flex-row">
                             <a href={repo?.html_url as string} target="_blank" className="cursor-pointer" key={index} >
                                 <RepoName>{repo.name}</RepoName>

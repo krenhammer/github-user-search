@@ -49,14 +49,13 @@ export const UserDetail: React.FC = () => {
 
     return (
         <Content>
-            <ReactTooltip />
-            <FaArrowLeft size="30" onClick={() => goBack()} className="cursor-pointer text-gray-500 hover:text-black absolute top-[5px] left-[15px]"/>
+            <FaArrowLeft data-tut="tour-back" size="30" onClick={() => goBack()} className="cursor-pointer text-gray-500 hover:text-black absolute top-[5px] left-[15px]"/>
             {/* {!user && 'Loading ...'} */}
             {!user && <span className="text-gray-500 animate-spin"><FaGithub size="60" /></span>}
             {user &&
                 <UserSection>
                     <a href={user?.html_url as string} target="_blank" className="flex flex-col items-center justify-center">
-                        <Avatar  $size="lg" alt={user?.name as string} src={user?.avatar_url as string} />
+                        <Avatar data-tut="tour-user-avatar" $size="lg" alt={user?.name as string} src={user?.avatar_url as string} />
                         <p className="text-5xl mb-5 text-gray-500 group-hover:text-black tracking-tighter font-black">{user?.login as string}</p>
                     </a>
                     <Follow />

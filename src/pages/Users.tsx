@@ -6,8 +6,7 @@ import { useSnapshot } from "valtio";
 
 import { useUserSearchURLState } from '../hooks/useURLState';
 import store from "../state";
-import {SearchBar, Pagination} from "../components";
-
+import { SearchBar, Pagination } from "../components";
 
 
 export const Content = tw.div`flex flex-col items-center justify-center w-full space-y-5`
@@ -23,20 +22,21 @@ const GridList = tw.div<GridListProps>`
 `
 
 export interface AvatarProps {
-    $size?: 'sm'|'md'|'lg'
+    $size?: 'sm' | 'md' | 'lg'
 }
 export const Avatar = tw.img<AvatarProps>`
     ${(p) => {
-        switch(p.$size) {
-        case 'sm':
-            return 'w-[50px]'
-          break;
-        case 'md':
-            return 'w-[100px]'
-          break;
-        default:
-          return 'w-[200px]'
-      }}
+        switch (p.$size) {
+            case 'sm':
+                return 'w-[50px]'
+                break;
+            case 'md':
+                return 'w-[100px]'
+                break;
+            default:
+                return 'w-[200px]'
+        }
+    }
     }
     grayscale text-black hover:grayscale-0 hover:contrast:200 rounded-xl mx-auto
 `
@@ -52,11 +52,11 @@ export const Users: React.FC = () => {
             <SearchBar />
             <section>
                 {snap.pageCount > 1 ? <Pagination /> : null}
-                <GridList $showGrid={snap.showUsersGrid}>
+                <GridList data-tut="tour-users" $showGrid={snap.showUsersGrid}>
                     {snap.users?.map((user, index) => (
                         <Link to={`/user/${user.login}`} className="group cursor-pointer" key={index} >
                             <Avatar data-tip={user.login} $size="md" alt="listing.name" src={user.avatar_url} />
-                            <p className="group-hover:text-black text-gray-500 text-xs">{_.truncate(user.login,{length:15})}</p>
+                            <p className="group-hover:text-black text-gray-500 text-xs">{_.truncate(user.login, { length: 15 })}</p>
                         </Link>
                     ))}
                 </GridList>

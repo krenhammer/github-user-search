@@ -18,6 +18,7 @@ function withOpacity(variableName) {
           skin: {
             base: withOpacity('--color-text-base'),
             muted: withOpacity('--color-text-muted'),
+            highlight: withOpacity('--color-text-highlight'),
             inverted: withOpacity('--color-text-inverted'),
           }
         },
@@ -25,11 +26,10 @@ function withOpacity(variableName) {
           skin: {
             base: withOpacity('--color-fill-base'),
             muted: withOpacity('--color-fill-muted'),
+            highlight: withOpacity('--color-fill-highlight'),
+            inverted: withOpacity('--color-fill-inverted'),
           }
-        },
-        maxHeight: {
-            '1/2': '50%',
-        },  
+        }, 
       },
     },
     variants: {

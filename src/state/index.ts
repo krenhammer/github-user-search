@@ -2,7 +2,7 @@ import React from "react";
 
 import { proxy } from 'valtio';
 import { devtools } from 'valtio/utils'
-import { PaginatedUsers, Users } from "../hooks/useUsersSearch";
+import { Users } from "../hooks/useUsersSearch";
 import { userResponse } from "./userResponse"
 import { UserQueryResult } from '../hooks/useUser'
 
@@ -15,7 +15,8 @@ export type UserSearchStore = {
     // resultsPerPage: number
     page: number,
     username?: string,
-    userData?: Partial<UserQueryResult>
+    userData?: Partial<UserQueryResult>,
+    isTouring: boolean
 };
 
 export const store = proxy<UserSearchStore>({
@@ -25,7 +26,7 @@ export const store = proxy<UserSearchStore>({
     showUsersGrid: true,
     users: userResponse.items,
     pageCount: 0,
-    // resultsPerPage: 50
+    isTouring: false,
 });
 
 const unsub = devtools(store, 'Github User Search')

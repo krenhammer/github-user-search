@@ -3,15 +3,27 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* @layer base {
+  :root {
+    --color-text-base: 255, 255, 255;
+    --color-text-muted: 115, 77, 122;
+    --color-text-highlight: 115, 77, 122;
+    --color-text-inverted: 115, 77, 122;
+    --color-fill-base: 45, 43, 85; 
+    --color-fill-muted: 30, 30, 63;
+    --color-fill-highlight: 42, 33, 57;
+    --color-fill-inverted: 42, 33, 57;
+  }
+  .theme-dark {
+    --color-text-base: 255, 255, 255;
+    --color-text-muted: 115, 77, 122;
+    --color-text-highlight: 115, 77, 122;
+    --color-fill-base: 45, 43, 85; 
+    --color-fill-muted: 30, 30, 63;
+    --color-fill-highlight: 42, 33, 57;
+  }
+} */
