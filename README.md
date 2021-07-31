@@ -57,7 +57,6 @@ The application utilizes [Valtio](https://github.com/pmndrs/valtio)'s change awa
 
 ### Custom Hooks
 Can be found in the [Hooks directory](https://github.com/krenhammer/github-user-search/tree/main/src/hooks).
-They duties are respectively:
 
 - [`useStoredQueryData.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useStoredQueryData.ts) - Hydrates [`valtio`](https://github.com/pmndrs/valtio) state with data from query hooks.
 - [`useURLState.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useURLState.ts) -
