@@ -19,6 +19,13 @@ jobs:
         key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-
+    - name: Cache vite build
+      uses: actions/cache@v2
+      with:
+        path: ./node_modules/.vite
+        key: ${{ runner.os }}-${{ hashFiles('./node_modules/.vite/**/*') }}
+        restore-keys: |
+          ${{ runner.os }}-
     - uses: pnpm/action-setup@v2.0.1
       with:
         version: 6.0.2
