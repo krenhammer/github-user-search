@@ -47,7 +47,7 @@ export const SearchBar: React.FC = () => {
                         data-tut="tour-user-search"
                         type="search" 
                         name="search" 
-                        placeholder="User Search ..." 
+                        placeholder="Search for username ..." 
                         onChange={onSearchChange} 
                         value={snap.userFilter} />
                     <span className="absolute right-0 top-0 mt-3 mr-3">

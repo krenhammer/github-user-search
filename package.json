@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "merge-deploy": "./scripts/merge-main.sh && ./scripts/deploy.sh"
   },
   "dependencies": {
     "@octokit/core": "^3.5.1",
