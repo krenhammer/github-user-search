@@ -5,6 +5,13 @@ import reactRefresh from '@vitejs/plugin-react-refresh'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [reactRefresh()],
+  build: {
+    terserOptions: {
+      compress: {
+        passes: 3
+      }
+    },
+  },
 
   // From https://gist.github.com/alexanderniebuhr/12a60bde6faf44d4f519e93b1765ec99
   resolve: {
