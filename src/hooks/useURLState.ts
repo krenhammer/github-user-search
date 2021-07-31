@@ -3,7 +3,6 @@ import { subscribeKey } from 'valtio/utils';
 import store from '../state';
 import { useHistory, useParams } from 'react-router-dom'
 import { useDebouncedValue } from '../utils/useDebouncedValue';
-import { delay } from 'q';
 
 export const useURLState = () => {
     useUserDetailURLState();
@@ -23,14 +22,6 @@ export const useUserDetailURLState = () => {
         // console.log("Set Store Username", debouncedUsername)
         store.username = debouncedUsername;
     }, [debouncedUsername]);
-
-    // const refreshURL = () => {
-    //     history.push(`/user/${store.username}`);
-    // };
-
-    // useEffect(() => subscribeKey(store, 'username', () => {
-    //     refreshURL();
-    // }), []);
 }
 
 export type UserSearchParams = {
@@ -53,15 +44,6 @@ export const useUserSearchURLState = () => {
     useEffect(() => {
         store.userFilter = debouncedFilter || '';
     }, [debouncedFilter]);
-
-    // useEffect(() => {(async () => {
-    //     await delay(200);
-
-    //     store.page = parseInt(debouncedPage || '1');
-    //     store.userFilter = debouncedFilter || '';
-
-    //     console.log(store, params, debouncedPage, debouncedFilter)
-    // })()}, [])
 
     const refreshURL = () => {
 

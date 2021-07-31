@@ -26,6 +26,7 @@ export const useStoredQueryData = () => {
 
         store.pageCount = data?.pageCount || 0;
         store.users = data?.users || null;
+        store.totalUsersCount = data?.totalCount || 0;
     }, [users])
 }
 

@@ -12,12 +12,13 @@ export type Users = Endpoints["GET /search/users"]["response"]["data"]["items"];
 export type PaginatedUsers = {
     users: Users,
     pageCount: number,
-    resultsPerPage: number
+    resultsPerPage: number,
+    totalCount: number
 };
 
 export type UsersResponse = OctokitResponse<Users>;
 
-const RESULTS_PER_PAGE = 20;
+export const RESULTS_PER_PAGE = 20;
 
 export const useUsersSearch = (filter: string, page = 1, resultsPerPage = RESULTS_PER_PAGE) => {
     useInitAPIClient();
@@ -53,6 +54,7 @@ export const useUsersSearch = (filter: string, page = 1, resultsPerPage = RESULT
 
         return {
             users,
+            totalCount: usersResponse?.data.total_count,
             pageCount,
             resultsPerPage
         };

@@ -5,6 +5,11 @@ import { useSnapshot } from "valtio";
 import * as _ from "lodash"
 
 import store from "../state";
+import { RESULTS_PER_PAGE } from "../hooks/useUsersSearch";
+
+const Container = tw.div`flex flex-col items-center mb-10`
+
+const CARET_SIZE = 25;
 
 interface PageLinkProps {
     $isSelected: boolean
@@ -19,7 +24,7 @@ export const Pagination: React.FC = () => {
 
     const snap = useSnapshot(store);
     let pageCount = snap.pageCount;
-    const caretSize = 25;
+    let currentCount = RESULTS_PER_PAGE * snap.page;
 
     const pageBack = () => {
         store.page = store.page - 1 > 0 ? store.page - 1 : 1;
@@ -33,19 +38,14 @@ export const Pagination: React.FC = () => {
 
     
     return (
-        <div className="flex flex-col items-center mb-10">
+        <Container>
             <div className="flex text-gray-700">
-                <FaCaretLeft size={caretSize} onClick={() => pageBack()}/>
-                {/* <div className="flex h-8 font-medium ">
-                    {_.times(snap.pageCount, (count) => (
-                       <PageLink $isSelected={snap.page == count }>{count}</PageLink>
-                    ))} 
-                </div> */}
+                <FaCaretLeft size={CARET_SIZE} onClick={() => pageBack()}/>
                 <p>{store.page} / {store.pageCount}</p>
-                <FaCaretRight size={caretSize} onClick={() => pageForward()}/>
-
+                <FaCaretRight size={CARET_SIZE} onClick={() => pageForward()}/>
             </div>
-        </div>
+            <span className="text-gray-300">{currentCount} / {snap.totalUsersCount as number}</span>
+        </Container>
     );
 }
 

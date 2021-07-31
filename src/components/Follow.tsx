@@ -55,6 +55,8 @@ export const Follow: React.FC = () => {
         setShowFollowers(!showFollowers)
     }
 
+    // Ensure react-tooltip rebinds on render
+    // https://github.com/wwayne/react-tooltip#3-tooltip-not-binding-to-dynamic-content
     useEffect(() => {
         ReactTooltip.rebuild();
     });
@@ -77,7 +79,7 @@ export const Follow: React.FC = () => {
                 // <a href={follow?.html_url as string} data-tip={follow?.login as string} target="_blank" className="cursor-pointer flex-none" key={index} >
                 //     <Avatar $size="sm" alt={follow?.name as string} src={follow?.avatar_url as string} />
                 // </a>
-                <AvatarLink key={follower?.login} user={follow} />
+                <AvatarLink key={follow?.login} user={follow} />
             ))}
             <a href={`https://github.com/${user?.login}?tab=${showFollowers ? 'followers' : 'following'}`}
                 target="_blank"

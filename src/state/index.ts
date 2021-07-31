@@ -11,6 +11,7 @@ export type UserSearchStore = {
     showUsersGrid: boolean
     users?: Users,
     pageCount: number,
+    totalUsersCount: number,
     // resultsPerPage: number
     page: number,
     username?: string,
@@ -19,6 +20,7 @@ export type UserSearchStore = {
 
 export const store = proxy<UserSearchStore>({
     userFilter: '',
+    totalUsersCount: 0,
     page: 1,
     showUsersGrid: true,
     users: userResponse.items,

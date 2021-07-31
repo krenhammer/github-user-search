@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { FaArrowLeft,FaGithub, FaUserFriends, FaEllipsisH } from "react-icons/fa";
 import { useSnapshot } from "valtio";
@@ -13,8 +13,6 @@ import { UserDetailParams, useUserDetailURLState } from "../hooks/useURLState";
 import { Followers, Following, Repos, User } from "../hooks/useUser";
 import store from "../state";
 
-
-const FOLLOWERS_NUM = 10;
 
 const UserSection = tw.div`m-5 w-2/3`
 
@@ -41,9 +39,13 @@ export const UserDetail: React.FC = () => {
         } else {
             history.push(`/${store.userFilter}`)
         }
-        // history.goBack();
     }
 
+    // Ensure react-tooltip rebinds on render
+    // https://github.com/wwayne/react-tooltip#3-tooltip-not-binding-to-dynamic-content
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
     return (
         <Content>
