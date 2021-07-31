@@ -14,7 +14,7 @@ import { Followers, Following, Repos, User } from "../hooks/useUser";
 import store from "../state";
 import AccessibleAnchor from '../components/accessibility/AccessibleAnchor';
 
-const UserSection = tw.div`m-5 lg:w-2/3`
+const UserSection = tw.div`m-5 lg:w-2/3 max-w-full`
 
 export const UserDetail: React.FC = () => {
 
@@ -62,7 +62,7 @@ export const UserDetail: React.FC = () => {
                             <p aria-label="Username" className="text-5xl mb-5 text-gray-500 group-hover:text-black tracking-tighter font-black">{user?.login as string}</p>
                         </a>
                     </header>
-                    <main>
+                    <main className="flex flex-col max-w-full">
                         <Follow />
                         <RepoListing repos={repos} />
                     </main>
