@@ -24,7 +24,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: $GITHUB_WORKSPACE/node_modules/.vite
-        key: ${{ runner.os }}-${{ hashFiles('$GITHUB_WORKSPACE/node_modules/.vite/**/*') }}
+        key: ${{ runner.os }}-${{ hashFiles('$GITHUB_WORKSPACE/node_modules/.vite') }}
         restore-keys: |
           ${{ runner.os }}-
     - uses: pnpm/action-setup@v2.0.1
@@ -32,7 +32,7 @@ jobs:
         version: 6.0.2
     - run: 'pnpm install' 
     - run: 'pnpm build' 
-    - run: 'pwd && ls -la . && $GITHUB_WORKSPACE/node_modules'
+    - run: 'pwd && ls -la . && ls -la $GITHUB_WORKSPACE/node_modules/.vite'
     - uses: South-Paw/action-netlify-deploy@v1.2.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
