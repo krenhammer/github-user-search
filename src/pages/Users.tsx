@@ -37,7 +37,7 @@ export const Avatar = tw.img<AvatarProps>`
                 return 'w-[150px]'
         }
     }}
-    grayscale text-black hover:grayscale-0 hover:contrast:200 rounded-xl mx-auto
+    grayscale text-black hover:grayscale-0 hover:contrast:200 rounded-xl md:mx-auto
 `
 
 export const Users: React.FC = () => {
@@ -55,10 +55,12 @@ export const Users: React.FC = () => {
                 {snap.pageCount > 1 ? <Pagination /> : null}
                 <GridList aria-label="Github Users" data-tut="tour-users" $showGrid={snap.showUsersGrid}>
                     {snap.users?.map((user, index) => (
-                        <Link to={`/user/${user.login}`} className="group cursor-pointer" key={index} >
-                            <Avatar data-tip={user.login} $size="md" alt={`${user?.login || "User"}'s Avatar.`} src={user.avatar_url} />
-                            <p className="group-hover:text-black text-gray-500 text-xs">{_.truncate(user.login, { length: 15 })}</p>
-                        </Link>
+                        <div className="flex flex-row justify-around">
+                            <Link to={`/user/${user.login}`} className="group cursor-pointer" key={index} >
+                                <Avatar data-tip={user.login} $size="md" alt={`${user?.login || "User"}'s Avatar.`} src={user.avatar_url} />
+                                <p className="group-hover:text-black text-gray-500 text-xs">{_.truncate(user.login, { length: 15 })}</p>
+                            </Link>
+                        </div>
                     ))}
                 </GridList>
                 {snap.pageCount > 1 ? <Pagination /> : null}
