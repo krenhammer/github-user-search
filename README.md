@@ -25,7 +25,7 @@ Here is an overview of that process:
 - Build the project with `pnpm run build`.
 - Deploy to Netlify using the [`South-Paw/action-netlify-deploy` GitHub Action](https://github.com/South-Paw/action-netlify-deploy)
 
-<img src="./assets/GithubActions.png" width="500">
+<img src="./assets/GithubActions.png" width="400">
 
 ### Feature / Onboarding Tour
 
@@ -33,7 +33,7 @@ Clicking the Tour Button Starts a Feature Tour
 <p>
 <img src="./assets/TourButton.png" width="50">
 </p>
-<img src="./assets/FeatureTour.png" width="500">
+<img src="./assets/FeatureTour.png" width="400">
 
 
 ### Caching
@@ -41,7 +41,7 @@ Facilitated through the use of [React Query]()
 
 Cache and Stale times are adjusted in the [`useUser.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useUser.ts) and [`useUsersSearch.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useUsersSearch.ts) custom hooks. See below for more info.
 
-<img src="./assets/ReactQueryCaching.png" width="500">
+<img src="./assets/ReactQueryCaching.png" width="400">
 
 HINT: Click the [React Query Dev Tools](https://react-query.tanstack.com/devtools) button in the lower left corner to open the inspector.
 
@@ -58,3 +58,12 @@ They duties are respectively:
 - [`useUser.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useUser.ts) - 
   Query hook to fetch user data from GitHub given a `username`.
 - [`useUsersSearch.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useUsersSearch.ts) - Query hook to search GitHub Users given a `userFilter` search string.
+
+### Browser Experience Optimization
+Application has been tuned using [Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse/) to provide an optimal browser experience. 
+
+<img src="./assets/ChromeLighthouse.png" width="300">
+
+### Accessibility
+Application leverages [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) to ensure high-standard accessibility for the user interface.
+
