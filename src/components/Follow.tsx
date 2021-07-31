@@ -42,12 +42,12 @@ export const Follow: React.FC = () => {
                 {showFollowers ? <GiFootsteps size="30" /> : <FaUserFriends size="30" />}
             </button>
             {showFollowers && followers && _.take(followers, FOLLOWERS_NUM).map((follower, index) => (
-                <a href={follower?.html_url as string} data-tip={follower?.name as string} target="_blank" className="cursor-pointer flex-none" key={index} >
+                <a href={follower?.html_url as string} data-tip={follower?.login as string} target="_blank" className="cursor-pointer flex-none" key={index} >
                     <Avatar $size="sm" alt={follower?.name as string} src={follower?.avatar_url as string} />
                 </a>
             ))}
             {!showFollowers && following && _.take(following, FOLLOWERS_NUM).map((follow, index) => (
-                <a href={follow?.html_url as string} data-tip={follow?.name as string} target="_blank" className="cursor-pointer flex-none" key={index} >
+                <a href={follow?.html_url as string} data-tip={follow?.login as string} target="_blank" className="cursor-pointer flex-none" key={index} >
                     <Avatar $size="sm" alt={follow?.name as string} src={follow?.avatar_url as string} />
                 </a>
             ))}
