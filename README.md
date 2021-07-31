@@ -73,7 +73,7 @@ Application leverages [React Aria](https://react-spectrum.adobe.com/react-aria/i
 <!-- https://segmentfault.com/a/1190000039875183/en -->
 <!-- https://loadable-components.com/ -->
 
-App uses [`@loadable/component`](https://loadable-components.com/) to lazy load React Components for given routes. This enables Vite chunk splitting / Brotli compression and reduces the bundle size.
+App uses [`@loadable/component`](https://loadable-components.com/) to lazy load React Components for given routes. This enables [Vite Chunk Splitting](https://vitejs.dev/guide/features.html#async-chunk-loading-optimization) / [Brotli Compression](https://github.com/google/brotli) and reduces the bundle size. See [`main.tsx`](https://github.com/krenhammer/github-user-search/blob/main/src/main.tsx)
 
 ### Responsive Layout / PWA Functionality
 
