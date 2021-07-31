@@ -74,7 +74,7 @@ export const Follow: React.FC = () => {
                     <AvatarLink key={follow?.login} user={follow} />
                 ))}
             </span>
-            <ButtonLink aria-label={!showFollowers ? 'Show All Followed Users' : 'Show All Followers'} data-tut="tour-all-followers" href={`https://github.com/${user?.login}?tab=${showFollowers ? 'followers' : 'following'}`}
+            <ButtonLink rel="noreferrer" aria-label={!showFollowers ? 'Show All Followed Users' : 'Show All Followers'} data-tut="tour-all-followers" href={`https://github.com/${user?.login}?tab=${showFollowers ? 'followers' : 'following'}`}
                 target="_blank"
                 data-tip={!showFollowers ? 'Show ALL Followed Users' : 'Show ALL Followers'}
                 >
