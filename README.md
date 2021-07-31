@@ -16,19 +16,20 @@ For convenience, the [scripts](https://github.com/krenhammer/github-user-search/
 
 Additionally, both scripts can be run simultaneously using the [`merge-deploy` `package.json`](https://github.com/krenhammer/github-user-search/blob/deploy/package.json#L8) command.
 
+
 ### GitHub Actions Deployment
 The app uses GitHub Actions to enable a continuous integration workflow for deployment to [Netlify](https://sk-ghusersearch.netlify.app/).
 
 Here is an overview of that process:
-- Checkout code from repo.
+- Checkout code from this [repo](https://github.com/krenhammer/github-user-search).
 - Install dependencies using `pnpm install`.
 - Build the project with `pnpm run build`.
 - Deploy to Netlify using the [`South-Paw/action-netlify-deploy` GitHub Action](https://github.com/South-Paw/action-netlify-deploy)
 
 <img src="./assets/GithubActions.png" width="400">
 
-### Feature / Onboarding Tour
 
+### Feature / Onboarding Tour
 Clicking the Tour Button Starts a Feature Tour
 <p>
 <img src="./assets/TourButton.png" width="50">
@@ -45,8 +46,8 @@ Cache and Stale times are adjusted in the [`useUser.ts`](https://github.com/kren
 
 HINT: Click the [React Query Dev Tools](https://react-query.tanstack.com/devtools) button in the lower left corner to open the inspector.
 
-
 <img src="./assets/ReactQueryDevToolsButton.png" width="50">
+
 
 ### Application Wide State Management
 The application utilizes [Valtio](https://github.com/pmndrs/valtio)'s change aware proxy state. In addition, [Valtio](https://github.com/pmndrs/valtio) supports the use of the standard [Redux Dev Tools](https://github.com/reduxjs/redux-devtools) browser extension to provide a formidable state inspection toolset. See [`state`](https://github.com/krenhammer/github-user-search/blob/main/src/state/index.ts) folder contents for more details.
@@ -66,25 +67,26 @@ They duties are respectively:
 - [`useUsersSearch.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useUsersSearch.ts) - Query hook to search GitHub Users given a `userFilter` search string.
 
 
-### Browser Experience Optimization
-Application has been tuned using [Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse/) to provide an optimal browser experience. 
-
-<img src="./assets/ChromeLighthouse.png" width="300">
-
-### Accessibility
-Application leverages [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) to ensure high-standard accessibility for the user interface.
-
-
 ### Chunk Splitting / Federated Lazy Loading
 <!-- https://segmentfault.com/a/1190000039875183/en -->
 <!-- https://loadable-components.com/ -->
 
 App uses [`@loadable/component`](https://loadable-components.com/) to lazy load React Components for given routes. This enables [Vite Chunk Splitting](https://vitejs.dev/guide/features.html#async-chunk-loading-optimization) / [Brotli Compression](https://github.com/google/brotli) and reduces the bundle size. See [`main.tsx`](https://github.com/krenhammer/github-user-search/blob/main/src/main.tsx)
 
+
+### Browser Experience Optimization
+Application has been tuned using [Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse/) to provide an optimal browser experience. 
+
+<img src="./assets/ChromeLighthouse.png" width="300">
+
+
+### Accessibility
+Application leverages [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) to ensure high-standard accessibility for the user interface.
+
+
 ### Responsive Layout / PWA Functionality
+By utilizing [TailwindCSS'](https://tailwindcss.com/) [Mobile First breakpoints](https://tailwindcss.com/docs/responsive-design#mobile-first) and the [Vite PWA Plugin](https://github.com/antfu/vite-plugin-pwa), the application is able to support a robust Mobile experience. See [`vite.config.ts`](https://github.com/krenhammer/github-user-search/blob/main/vite.config.ts) for more details.
 
-By utilizing [TailwindCSS'](https://tailwindcss.com/) [Mobile First breakpoints](https://tailwindcss.com/docs/responsive-design#mobile-first) and the [Vite PWA Plugin](https://github.com/antfu/vite-plugin-pwa), the application is able to support a robust Mobile experience. 
-
-Evidence of Service Worker interaction below:
+Service Worker tasking can be viewed below:
 
 <img src="./assets/VitePWAServiceWorkers.png" width="300">
