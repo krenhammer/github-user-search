@@ -66,7 +66,7 @@ export const Follow: React.FC = () => {
                 data-tip={!showFollowers ? 'Show Followers' : 'Show Following'}>
                 {showFollowers ? <RiUserHeartFill size="30" /> : <FaUserFriends size={ICON_SIZE} />}
             </Button>
-            <span data-tut="tour-follow" className="md:inline hidden flex flex-row space-x-2">
+            <span data-tut="tour-follow" className="md:flex hidden flex flex-row space-x-2">
                 {showFollowers && followers && _.take(followers, FOLLOWERS_NUM).map((follower, index) => (
                     <AvatarLink key={follower?.login} user={follower} />
                 ))}

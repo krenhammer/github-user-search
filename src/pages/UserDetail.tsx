@@ -50,7 +50,7 @@ export const UserDetail: React.FC = () => {
     return (
         <Content>
             <AccessibleAnchor aria-label="Go Back to Search Page" onClick={() => goBack()}>
-                <FaArrowLeft data-tut="tour-back" size="30"  className="cursor-pointer text-gray-500 hover:text-black absolute top-[5px] left-[15px]"/>
+                <FaArrowLeft data-tut="tour-back" size="30"  className="cursor-pointer text-gray-500 hover:text-black absolute top-[44px] md:top-[5px] left-[15px]"/>
             </AccessibleAnchor>
             {/* {!user && 'Loading ...'} */}
             {!user && <span aria-hidden className="text-gray-500 animate-spin"><FaGithub size="60" /></span>}

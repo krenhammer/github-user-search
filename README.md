@@ -68,3 +68,17 @@ Application has been tuned using [Chrome Lighthouse](https://developers.google.c
 ### Accessibility
 Application leverages [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) to ensure high-standard accessibility for the user interface.
 
+
+### Chunk Splitting / Federated Lazy Loading
+<!-- https://segmentfault.com/a/1190000039875183/en -->
+<!-- https://loadable-components.com/ -->
+
+App uses [`@loadable/component`](https://loadable-components.com/) to lazy load React Components for given routes. This enables Vite chunk splitting / Brotli compression and reduces the bundle size.
+
+### Responsive Layout / PWA Functionality
+
+By utilizing [TailwindCSS'](https://tailwindcss.com/) [Mobile First breakpoints](https://tailwindcss.com/docs/responsive-design#mobile-first) and the [Vite PWA Plugin](https://github.com/antfu/vite-plugin-pwa), the application is able to support a robust Mobile experience. 
+
+Evidence of Service Worker interaction below:
+
+<img src="./assets/VitePWAServiceWorkers.png" width="300">

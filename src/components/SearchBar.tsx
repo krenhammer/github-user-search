@@ -7,7 +7,7 @@ import { useSearchFieldState } from '@react-stately/searchfield';
 
 import store from "../state";
 
-const Container = tw.div`flex flex-row space-x-6 m-5`
+const Container = tw.div`flex flex-row space-x-6 m-5 `
 const SearchInput = tw.input`border-2 border-gray-300 bg-white h-10 px-5 pr-16
     rounded-lg text-xs md:text-sm focus:outline-none focus:border-black focus:ring-black h-10`
 

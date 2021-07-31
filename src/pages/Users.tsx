@@ -9,7 +9,7 @@ import store from "../state";
 import { SearchBar, Pagination } from "../components";
 
 
-export const Content = tw.div`flex flex-col items-center justify-center w-full space-y-5`
+export const Content = tw.div`flex flex-col items-center justify-center w-full space-y-5 mt-[44px] md:mt-[5px]`
 const Title = tw.h1`text-3xl text-gray-400 font-black m-5`
 
 interface GridListProps {
@@ -55,7 +55,7 @@ export const Users: React.FC = () => {
                 {snap.pageCount > 1 ? <Pagination /> : null}
                 <GridList aria-label="Github Users" data-tut="tour-users" $showGrid={snap.showUsersGrid}>
                     {snap.users?.map((user, index) => (
-                        <div className="flex flex-row justify-around">
+                        <div key={user.login} className="flex flex-row justify-around">
                             <Link to={`/user/${user.login}`} className="group cursor-pointer" key={index} >
                                 <Avatar crossOrigin="anonymous" data-tip={user.login} $size="md" alt={`${user?.login || "User"}'s Avatar.`} src={user.avatar_url} />
                                 <p className="group-hover:text-black text-gray-500 text-xs">{_.truncate(user.login, { length: 15 })}</p>
