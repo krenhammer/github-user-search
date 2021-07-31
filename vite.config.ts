@@ -25,17 +25,17 @@ export default defineConfig({
         display: "standalone",
         icons: [
           {
-            src: '/src/favicon.svg', // <== don't remove slash, for testing purposes
+            src: '/assets/favicon.svg', // <== don't remove slash, for testing purposes
             sizes: '192x192',
             type: 'image/svg',
           },
           {
-            src: '/src/favicon.svg', // <== don't remove slash, for testing purposes
+            src: '/assets/favicon.svg', // <== don't remove slash, for testing purposes
             sizes: '512x512',
             type: 'image/svg',
           },
           {
-            src: '/src/favicon.svg', // <== don't remove slash, for testing purposes
+            src: '/assets/favicon.svg', // <== don't remove slash, for testing purposes
             sizes: '512x512',
             type: 'image/svg',
             purpose: 'any maskable',
@@ -62,10 +62,10 @@ export default defineConfig({
         },
         {
           // Match any request that ends with .png, .jpg, .jpeg or .svg.
-          urlPattern: /avatars\.githubusercontent\.com/,
+          urlPattern: /^.+?avatars\.githubusercontent\.com.+?$/,
   
           // Apply a cache-first strategy.
-          handler: 'StaleWhileRevalidate',
+          handler: 'CacheFirst',
   
           options: {
             // Use a custom cache name.
