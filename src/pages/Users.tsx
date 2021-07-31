@@ -34,7 +34,7 @@ export const Avatar = tw.img<AvatarProps>`
                 return 'w-[100px]'
                 break;
             default:
-                return 'w-[200px]'
+                return 'w-[150px]'
         }
     }
     }

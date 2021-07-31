@@ -11,7 +11,7 @@ import { useButton } from "react-aria";
 
 const Container = tw.div`flex flex-col items-center mb-2`
 
-const CARET_SIZE = 25;
+const CARET_SIZE = 50;
 
 interface PageLinkProps {
     $isSelected: boolean
@@ -60,13 +60,13 @@ export const Pagination: React.FC = () => {
         <Container>
             <div className="flex text-gray-700">
                 <AccessibleCaret data-tut="tour-page-back" onClick={() => pageBack()}>
-                    <FaCaretLeft size={CARET_SIZE} />
+                    <FaCaretLeft className="cursor-pointer" size={CARET_SIZE} />
                 </AccessibleCaret>
-                <p data-tut="tour-pagination">
+                <p className="text-xl leading-[2.3em]" data-tut="tour-pagination">
                     <span aria-label="Page Number">{store.page}</span> / <span aria-label="Total Page Count">{store.pageCount}</span>
                 </p>
                 <AccessibleCaret data-tut="tour-page-forward" onClick={() => pageForward()}>
-                    <FaCaretRight size={CARET_SIZE} />
+                    <FaCaretRight className="cursor-pointer" size={CARET_SIZE} />
                 </AccessibleCaret>
             </div>
             <span aria-label="Number of Users" data-tip="Number of Users" data-tut="tour-total-users" className="text-gray-400 hover:text-gray-500">{currentCount} / {snap.totalUsersCount as number}</span>
