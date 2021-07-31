@@ -2,6 +2,8 @@
 
 Is a [TypeScript](https://www.typescriptlang.org/) based [React](https://reactjs.org/) web application used to search the [Github](https://github.com/) userbase.
 
+<img src="./assets/GithubUserSearch.png" width="400">
+
 ## Highlights
 
 ### Development/Deployment Workflow:
