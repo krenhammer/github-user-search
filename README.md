@@ -36,8 +36,8 @@ Clicking the Tour Button Starts a Feature Tour
 <img src="./assets/FeatureTour.png" width="400">
 
 
-### Caching
-Facilitated through the use of [React Query]()
+### API Request Caching
+Facilitated through the use of [React Query](https://react-query.tanstack.com/)
 
 Cache and Stale times are adjusted in the [`useUser.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useUser.ts) and [`useUsersSearch.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useUsersSearch.ts) custom hooks. See below for more info.
 
@@ -58,6 +58,7 @@ They duties are respectively:
 - [`useUser.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useUser.ts) - 
   Query hook to fetch user data from GitHub given a `username`.
 - [`useUsersSearch.ts`](https://github.com/krenhammer/github-user-search/blob/main/src/hooks/useUsersSearch.ts) - Query hook to search GitHub Users given a `userFilter` search string.
+
 
 ### Browser Experience Optimization
 Application has been tuned using [Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse/) to provide an optimal browser experience. 

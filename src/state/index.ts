@@ -1,9 +1,7 @@
-import React from "react";
 
 import { proxy } from 'valtio';
 import { devtools } from 'valtio/utils'
 import { Users } from "../hooks/useUsersSearch";
-import { userResponse } from "./userResponse"
 import { UserQueryResult } from '../hooks/useUser'
 
 export type UserSearchStore = {
@@ -12,7 +10,6 @@ export type UserSearchStore = {
     users?: Users,
     pageCount: number,
     totalUsersCount: number,
-    // resultsPerPage: number
     page: number,
     username?: string,
     userData?: Partial<UserQueryResult>,
@@ -24,7 +21,7 @@ export const store = proxy<UserSearchStore>({
     totalUsersCount: 0,
     page: 1,
     showUsersGrid: true,
-    users: userResponse.items,
+    users: [],
     pageCount: 0,
     isTouring: false,
 });
