@@ -22,7 +22,7 @@ export const RepoListing: React.FC<RepoListingProps> = ({repos}) => {
                 {repos && repos.map((repo, index) => (
                     <div key={index} className="group">
                         <div className="flex flex-row px-5">
-                            <AccessibleAnchor aria-label="Open Repository in New Tab" href={repo?.html_url as string} target="_blank" className="cursor-pointer" key={index} >
+                            <AccessibleAnchor aria-label="Open Repository in New Tab" href={repo?.html_url as string} target="_blank"  key={index} >
                                 <RepoName aria-label="Repository Name">{repo.name}</RepoName>
                             </AccessibleAnchor>
                             <RepoStats repo={repo}/>

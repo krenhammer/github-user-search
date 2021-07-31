@@ -7,7 +7,7 @@ export const AccessibleAnchor: React.FC<React.DetailedHTMLProps<React.AnchorHTML
     let {linkProps} = useLink(props, ref);
     
     return (
-        <a {...{ ref }} {...linkProps}>{props.children}</a>
+        <a className="cursor-pointer" {...props} {...{ ref }} {...linkProps}>{props.children}</a>
     );
 }
 
