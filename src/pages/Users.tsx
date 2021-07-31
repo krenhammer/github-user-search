@@ -36,8 +36,7 @@ export const Avatar = tw.img<AvatarProps>`
             default:
                 return 'w-[150px]'
         }
-    }
-    }
+    }}
     grayscale text-black hover:grayscale-0 hover:contrast:200 rounded-xl mx-auto
 `
 

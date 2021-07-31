@@ -7,7 +7,7 @@ import ReactTooltip from "react-tooltip";
 import moment from "moment";
 import { Repo } from "../hooks/useUser";
 
-const Container = tw.div`ml-5 flex flex-row space-x-6 group-hover:visible invisible`
+const Container = tw.div`ml-5 flex flex-row lg:space-x-6 space-x-3 group-hover:visible invisible`
 const Stat = tw.span`flex flex-row gap-1 text-gray-500 hover:text-black space-x-2 my-auto`
 const Language = tw.span`rounded-xl bg-gray-500 text-white text-sm p-1 px-2 hover:bg-black`
 

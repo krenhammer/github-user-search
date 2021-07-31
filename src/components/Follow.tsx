@@ -62,11 +62,11 @@ export const Follow: React.FC = () => {
 
     return (
         <div className="overflow-x-auto flex flex-row space-x-2 items-center justify-center">
-            <Button aria-label={!showFollowers ? 'Show Followers' : 'Show Following'} data-tut="tour-follow-toggle" onClick={() => toggleFollowers()}
+            <Button className="md:visible invisible" aria-label={!showFollowers ? 'Show Followers' : 'Show Following'} data-tut="tour-follow-toggle" onClick={() => toggleFollowers()}
                 data-tip={!showFollowers ? 'Show Followers' : 'Show Following'}>
                 {showFollowers ? <RiUserHeartFill size="30" /> : <FaUserFriends size={ICON_SIZE} />}
             </Button>
-            <span data-tut="tour-follow" className="flex flex-row space-x-2">
+            <span data-tut="tour-follow" className="md:visible invisible flex flex-row space-x-2">
                 {showFollowers && followers && _.take(followers, FOLLOWERS_NUM).map((follower, index) => (
                     <AvatarLink key={follower?.login} user={follower} />
                 ))}
@@ -74,7 +74,7 @@ export const Follow: React.FC = () => {
                     <AvatarLink key={follow?.login} user={follow} />
                 ))}
             </span>
-            <ButtonLink rel="noreferrer" aria-label={!showFollowers ? 'Show All Followed Users' : 'Show All Followers'} data-tut="tour-all-followers" href={`https://github.com/${user?.login}?tab=${showFollowers ? 'followers' : 'following'}`}
+            <ButtonLink className="md:visible invisible" rel="noreferrer" aria-label={!showFollowers ? 'Show All Followed Users' : 'Show All Followers'} data-tut="tour-all-followers" href={`https://github.com/${user?.login}?tab=${showFollowers ? 'followers' : 'following'}`}
                 target="_blank"
                 data-tip={!showFollowers ? 'Show ALL Followed Users' : 'Show ALL Followers'}
                 >

@@ -14,7 +14,7 @@ import { Followers, Following, Repos, User } from "../hooks/useUser";
 import store from "../state";
 import AccessibleAnchor from '../components/accessibility/AccessibleAnchor';
 
-const UserSection = tw.div`m-5 w-2/3`
+const UserSection = tw.div`m-5 lg:w-2/3`
 
 export const UserDetail: React.FC = () => {
 
