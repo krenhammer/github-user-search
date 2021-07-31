@@ -58,7 +58,7 @@ export const UserDetail: React.FC = () => {
                 <UserSection>
                     <header>
                         <a rel="noreferrer" href={user?.html_url as string} target="_blank" className="flex flex-col items-center justify-center">
-                            <Avatar aria-label="Avatar" aria-roledescription={`${user?.login || "User"}'s Avatar.`} data-tut="tour-user-avatar" $size="lg" alt={`${user?.login || "User"}'s Avatar.`} src={user?.avatar_url as string} />
+                            <Avatar crossOrigin="anonymous" aria-label="Avatar" aria-roledescription={`${user?.login || "User"}'s Avatar.`} data-tut="tour-user-avatar" $size="lg" alt={`${user?.login || "User"}'s Avatar.`} src={user?.avatar_url as string} />
                             <p aria-label="Username" className="text-5xl mb-5 text-gray-500 group-hover:text-black tracking-tighter font-black">{user?.login as string}</p>
                         </a>
                     </header>

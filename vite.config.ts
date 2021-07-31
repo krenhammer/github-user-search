@@ -12,9 +12,10 @@ export default defineConfig({
       includeAssets: [
         '/src/favicon.svg', 
       ],
+      mode: 'development',
       // filename: 'serviceWorker.ts',
       base: '/',
-      // strategies: 'injectManifest',
+      strategies: 'generateSW',
       srcDir: 'src',
       manifest: {
         name: 'Github User Search',
@@ -42,7 +43,40 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ["https://avatars.githubusercontent.com/u/*"]
+        runtimeCaching: [{
+          // Match any request that ends with .png, .jpg, .jpeg or .svg.
+          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+  
+          // Apply a cache-first strategy.
+          handler: 'CacheFirst',
+  
+          options: {
+            // Use a custom cache name.
+            cacheName: 'images',
+  
+            // Only cache 50 images.
+            expiration: {
+              maxEntries: 50,
+            },
+          },
+        },
+        {
+          // Match any request that ends with .png, .jpg, .jpeg or .svg.
+          urlPattern: /avatars\.githubusercontent\.com/,
+  
+          // Apply a cache-first strategy.
+          handler: 'StaleWhileRevalidate',
+  
+          options: {
+            // Use a custom cache name.
+            cacheName: 'gh-avatars',
+  
+            // Only cache 10 images.
+            expiration: {
+              maxEntries: 1500,
+            },
+          },
+        }],
         // workbox options for generateSW
       }
     })
