@@ -19,7 +19,7 @@ export default defineConfig({
       srcDir: 'src',
       manifest: {
         name: 'Github User Search',
-        short_name: 'PWA Inject',
+        short_name: 'User Search',
         theme_color: '#000000',
         background_color: "#ffffff",
         display: "standalone",
