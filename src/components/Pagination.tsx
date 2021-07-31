@@ -7,7 +7,7 @@ import * as _ from "lodash"
 import store from "../state";
 import { RESULTS_PER_PAGE } from "../hooks/useUsersSearch";
 
-const Container = tw.div`flex flex-col items-center mb-10`
+const Container = tw.div`flex flex-col items-center mb-2`
 
 const CARET_SIZE = 25;
 

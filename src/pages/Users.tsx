@@ -1,9 +1,10 @@
+import * as  _ from "lodash";
 import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components"
 import { useSnapshot } from "valtio";
-import { useUserSearchURLState } from '../hooks/useURLState';
 
+import { useUserSearchURLState } from '../hooks/useURLState';
 import store from "../state";
 import {SearchBar, Pagination} from "../components";
 
@@ -54,9 +55,8 @@ export const Users: React.FC = () => {
                 <GridList $showGrid={snap.showUsersGrid}>
                     {snap.users?.map((user, index) => (
                         <Link to={`/user/${user.login}`} className="group cursor-pointer" key={index} >
-                            <Avatar $size="md" alt="listing.name" src={user.avatar_url} />
-                            <p className="group-hover:text-black text-gray-500 text-sm">{user.login}</p>
-                        
+                            <Avatar data-tip={user.login} $size="md" alt="listing.name" src={user.avatar_url} />
+                            <p className="group-hover:text-black text-gray-500 text-xs">{_.truncate(user.login,{length:15})}</p>
                         </Link>
                     ))}
                 </GridList>

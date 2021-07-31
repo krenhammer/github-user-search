@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { FaArrowLeft,FaGithub, FaUserFriends, FaEllipsisH } from "react-icons/fa";
+import { FaArrowLeft,FaGithub } from "react-icons/fa";
 import { useSnapshot } from "valtio";
 import ReactTooltip from 'react-tooltip';
 import tw from "tailwind-styled-components";

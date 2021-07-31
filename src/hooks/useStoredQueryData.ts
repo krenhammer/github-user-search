@@ -11,6 +11,7 @@ export const useStoredQueryData = () => {
     const user = useUser(snap.username),
          users = useUsersSearch(snap.userFilter, snap.page);
     
+
     useEffect(() => {
         store.userData = user.data;
     }, [user])
