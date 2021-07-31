@@ -36,7 +36,7 @@ const AvatarLink: React.FC<AvatarLinkProps> = ({ user }) => {
             data-tip={user?.login as string} 
             // target="_blank" 
             className="cursor-pointer flex-none">
-            <Avatar $size="sm" alt={user?.name as string} src={user?.avatar_url as string} />
+            <Avatar $size="sm" alt={`${user?.login || "User"}'s Avatar`} src={user?.avatar_url as string} />
         </AccessibleRouterLink>
     );
 }

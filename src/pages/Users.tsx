@@ -57,7 +57,7 @@ export const Users: React.FC = () => {
                 <GridList aria-label="Github Users" data-tut="tour-users" $showGrid={snap.showUsersGrid}>
                     {snap.users?.map((user, index) => (
                         <Link to={`/user/${user.login}`} className="group cursor-pointer" key={index} >
-                            <Avatar data-tip={user.login} $size="md" alt="listing.name" src={user.avatar_url} />
+                            <Avatar data-tip={user.login} $size="md" alt={`${user?.login || "User"}'s Avatar.`} src={user.avatar_url} />
                             <p className="group-hover:text-black text-gray-500 text-xs">{_.truncate(user.login, { length: 15 })}</p>
                         </Link>
                     ))}
