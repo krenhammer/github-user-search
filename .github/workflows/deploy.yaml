@@ -22,8 +22,8 @@ jobs:
     - name: Cache vite build
       uses: actions/cache@v2
       with:
-        path: ./node_modules/.vite
-        key: ${{ runner.os }}-${{ hashFiles('./node_modules/.vite/**/*') }}
+        path: $GITHUB_WORKSPACE/node_modules/.vite
+        key: ${{ runner.os }}-${{ hashFiles('$GITHUB_WORKSPACE/node_modules/.vite/**/*') }}
         restore-keys: |
           ${{ runner.os }}-
     - uses: pnpm/action-setup@v2.0.1
