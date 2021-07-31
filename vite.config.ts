@@ -41,9 +41,10 @@ export default defineConfig({
           },
         ],
       },
-      // workbox: {
-      //   // workbox options for generateSW
-      // }
+      workbox: {
+        globPatterns: ["https://avatars.githubusercontent.com/u/*"]
+        // workbox options for generateSW
+      }
     })
   ],
   build: {
