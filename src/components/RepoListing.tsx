@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import tw from "tailwind-styled-components";
 import { RepoStats } from ".";
 import { Repos } from "../hooks/useUser";
+
+import AccessibleAnchor from './accessibility/AccessibleAnchor';
 
 
 const Container = tw.div`flex flex-col items-center justify-center mt-10`
@@ -15,18 +17,17 @@ interface RepoListingProps {
 export const RepoListing: React.FC<RepoListingProps> = ({repos}) => {
 
     return (
-        <Container data-tut="tour-repos">
+        <Container data-tut="tour-repos" aria-label="Github Repositories">
             <div className="flex flex-col space-y-3">
                 {repos && repos.map((repo, index) => (
                     <div key={index} className="group">
                         <div className="flex flex-row">
-                            <a href={repo?.html_url as string} target="_blank" className="cursor-pointer" key={index} >
-                                <RepoName>{repo.name}</RepoName>
-                                
-                            </a>
+                            <AccessibleAnchor aria-label="Open Repository in New Tab" href={repo?.html_url as string} target="_blank" className="cursor-pointer" key={index} >
+                                <RepoName aria-label="Repository Name">{repo.name}</RepoName>
+                            </AccessibleAnchor>
                             <RepoStats repo={repo}/>
                         </div>
-                        <RepoDescription>{repo.description}</RepoDescription>
+                        <RepoDescription aria-label="Repository Description">{repo.description}</RepoDescription>
                     </div>
                 ))}
             </div>

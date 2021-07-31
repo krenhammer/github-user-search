@@ -12,7 +12,7 @@ import { Follow, RepoListing } from "../components"
 import { UserDetailParams, useUserDetailURLState } from "../hooks/useURLState";
 import { Followers, Following, Repos, User } from "../hooks/useUser";
 import store from "../state";
-
+import AccessibleAnchor from '../components/accessibility/AccessibleAnchor';
 
 const UserSection = tw.div`m-5 w-2/3`
 
@@ -49,14 +49,16 @@ export const UserDetail: React.FC = () => {
 
     return (
         <Content>
-            <FaArrowLeft data-tut="tour-back" size="30" onClick={() => goBack()} className="cursor-pointer text-gray-500 hover:text-black absolute top-[5px] left-[15px]"/>
+            <AccessibleAnchor aria-label="Go Back to Search Page" onClick={() => goBack()}>
+                <FaArrowLeft data-tut="tour-back" size="30"  className="cursor-pointer text-gray-500 hover:text-black absolute top-[5px] left-[15px]"/>
+            </AccessibleAnchor>
             {/* {!user && 'Loading ...'} */}
-            {!user && <span className="text-gray-500 animate-spin"><FaGithub size="60" /></span>}
+            {!user && <span aria-hidden className="text-gray-500 animate-spin"><FaGithub size="60" /></span>}
             {user &&
                 <UserSection>
                     <a href={user?.html_url as string} target="_blank" className="flex flex-col items-center justify-center">
-                        <Avatar data-tut="tour-user-avatar" $size="lg" alt={user?.name as string} src={user?.avatar_url as string} />
-                        <p className="text-5xl mb-5 text-gray-500 group-hover:text-black tracking-tighter font-black">{user?.login as string}</p>
+                        <Avatar aria-label="Avatar" aria-roledescription={`${user?.login || "User"}'s Avatar.`} data-tut="tour-user-avatar" $size="lg" alt={user?.name as string} src={user?.avatar_url as string} />
+                        <p aria-label="Username" className="text-5xl mb-5 text-gray-500 group-hover:text-black tracking-tighter font-black">{user?.login as string}</p>
                     </a>
                     <Follow />
                     <RepoListing repos={repos} />

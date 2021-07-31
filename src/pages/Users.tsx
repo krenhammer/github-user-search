@@ -49,10 +49,12 @@ export const Users: React.FC = () => {
 
     return (
         <Content>
-            <SearchBar />
-            <section>
+            <nav>
+                <SearchBar />
+            </nav>
+            <main>
                 {snap.pageCount > 1 ? <Pagination /> : null}
-                <GridList data-tut="tour-users" $showGrid={snap.showUsersGrid}>
+                <GridList aria-label="Github Users" data-tut="tour-users" $showGrid={snap.showUsersGrid}>
                     {snap.users?.map((user, index) => (
                         <Link to={`/user/${user.login}`} className="group cursor-pointer" key={index} >
                             <Avatar data-tip={user.login} $size="md" alt="listing.name" src={user.avatar_url} />
@@ -61,7 +63,7 @@ export const Users: React.FC = () => {
                     ))}
                 </GridList>
                 {snap.pageCount > 1 ? <Pagination /> : null}
-            </section>
+            </main>
         </Content>
     );
 }

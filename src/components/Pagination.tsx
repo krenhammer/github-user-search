@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaCaretLeft, FaCaretRight} from "react-icons/fa";
 import tw from "tailwind-styled-components"
 import { useSnapshot } from "valtio";
@@ -7,6 +7,7 @@ import * as _ from "lodash"
 import store from "../state";
 import { RESULTS_PER_PAGE } from "../hooks/useUsersSearch";
 import ReactTooltip from "react-tooltip";
+import { useButton } from "react-aria";
 
 const Container = tw.div`flex flex-col items-center mb-2`
 
@@ -20,6 +21,17 @@ const PageLink = tw.div<PageLinkProps>`
     ${(p) => (p.$isSelected ? "border-black" : "border-transparent")}
     w-8 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  border-t-2  
 `
+
+const AccessibleCaret: React.FC<React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>> = (props: any) => {
+    let ref = useRef<HTMLAnchorElement>(null);
+    let {buttonProps} = useButton(props, ref);
+
+    return (
+        <a {...{ref}} {...buttonProps}>
+            {props.children}
+        </a>
+    )
+}   
 
 export const Pagination: React.FC = () => {
 
@@ -47,9 +59,15 @@ export const Pagination: React.FC = () => {
     return (
         <Container>
             <div className="flex text-gray-700">
-                <FaCaretLeft data-tut="tour-page-back" size={CARET_SIZE} onClick={() => pageBack()}/>
-                <p data-tut="tour-pagination">{store.page} / {store.pageCount}</p>
-                <FaCaretRight data-tut="tour-page-forward" size={CARET_SIZE} onClick={() => pageForward()}/>
+                <AccessibleCaret data-tut="tour-page-back" onClick={() => pageBack()}>
+                    <FaCaretLeft size={CARET_SIZE} />
+                </AccessibleCaret>
+                <p data-tut="tour-pagination">
+                    <span aria-label="Page Number">{store.page}</span> / <span aria-label="Total Page Count">{store.pageCount}</span>
+                </p>
+                <AccessibleCaret data-tut="tour-page-forward" onClick={() => pageForward()}>
+                    <FaCaretRight size={CARET_SIZE} />
+                </AccessibleCaret>
             </div>
             <span data-tip="user count" data-tut="tour-total-users" className="text-gray-300 hover:text-gray-400">{currentCount} / {snap.totalUsersCount as number}</span>
         </Container>

@@ -27,10 +27,10 @@ export const RepoStats: React.FC<RepoStatsProps> = ({repo}) => {
 
     return (
         <Container>
-            {repo.language && <Stat><Language>{repo.language}</Language></Stat> }
-            <Stat data-tip="Stars"><FaRegStar size={ICON_SIZE}/>{repo.stargazers_count}</Stat>
-            <Stat data-tip="Forks"><VscRepoForked size={ICON_SIZE} />{repo.forks_count}</Stat>
-            <Stat data-tip="Last Commit"><MdUpdate size={ICON_SIZE} />{lastUpdated}</Stat>
+            {repo.language && <Stat aria-label="Language"><Language>{repo.language}</Language></Stat> }
+            <Stat aria-label="Stars" data-tip="Stars"><FaRegStar size={ICON_SIZE}/>{repo.stargazers_count}</Stat>
+            <Stat aria-label="Forks" data-tip="Forks"><VscRepoForked size={ICON_SIZE} />{repo.forks_count}</Stat>
+            <Stat aria-label="Date of Last Commit" data-tip="Last Commit"><MdUpdate size={ICON_SIZE} />{lastUpdated}</Stat>
         </Container> 
     );
 }

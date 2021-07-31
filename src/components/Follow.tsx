@@ -6,10 +6,13 @@ import ReactTooltip from "react-tooltip";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useSnapshot } from "valtio";
+import AccessibleRouterLink from './accessibility/AccessibleRouterLink';
 
 import { Followers, Following, User } from "../hooks/useUser";
 import store from "../state";
 import { Avatar } from "../pages/Users";
+
+
 
 import { Button, ICON_SIZE } from "./SearchBar";
 
@@ -28,13 +31,13 @@ type AvatarLinkProps = {
 const AvatarLink: React.FC<AvatarLinkProps> = ({ user }) => {
    
     return (
-        <Link 
+        <AccessibleRouterLink 
             to={`/user/${user?.login}`}
             data-tip={user?.login as string} 
             // target="_blank" 
             className="cursor-pointer flex-none">
             <Avatar $size="sm" alt={user?.name as string} src={user?.avatar_url as string} />
-        </Link>
+        </AccessibleRouterLink>
     );
 }
 
