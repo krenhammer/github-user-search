@@ -36,7 +36,8 @@ export const useUsersSearch = (filter: string, page = 1, resultsPerPage = RESULT
             return {
                 users: [],
                 pageCount: 0,
-                per_page: resultsPerPage
+                resultsPerPage,
+                totalCount: 0
             };
         }
 
@@ -54,7 +55,7 @@ export const useUsersSearch = (filter: string, page = 1, resultsPerPage = RESULT
 
         return {
             users,
-            totalCount: usersResponse?.data.total_count,
+            totalCount: usersResponse?.data.total_count || 0,
             pageCount,
             resultsPerPage
         };
