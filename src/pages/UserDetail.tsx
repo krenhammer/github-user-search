@@ -36,7 +36,12 @@ export const UserDetail: React.FC = () => {
 
     const goBack = () => {
         store.userData = null;
-        history.goBack();
+        if(store.userFilter) {
+            history.push(`/search/${store.userFilter}`)
+        } else {
+            history.push(`/${store.userFilter}`)
+        }
+        // history.goBack();
     }
 
 
