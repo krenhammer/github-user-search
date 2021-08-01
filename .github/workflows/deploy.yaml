@@ -24,6 +24,8 @@ jobs:
         version: 6.0.2
     - run: 'pnpm install' 
     - run: 'pnpm build'
+      env: # Or as an environment variable
+        VITE_TOKEN_GITHUB: ${{ secrets.VITE_TOKEN_GITHUB }}
     - uses: South-Paw/action-netlify-deploy@v1.2.0
       with:
         github-token: ${{ secrets.VITE_TOKEN_GITHUB }}
