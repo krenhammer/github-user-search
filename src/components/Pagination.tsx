@@ -27,7 +27,7 @@ const AccessibleCaret: React.FC<React.DetailedHTMLProps<React.AnchorHTMLAttribut
     let {buttonProps} = useButton(props, ref);
 
     return (
-        <a {...{ref}} {...buttonProps}>
+        <a {...{ref}} {...props} {...buttonProps}>
             {props.children}
         </a>
     )
@@ -59,13 +59,13 @@ export const Pagination: React.FC = () => {
     return (
         <Container>
             <div className="flex text-gray-700">
-                <AccessibleCaret data-tut="tour-page-back" onClick={() => pageBack()}>
+                <AccessibleCaret data-tip="Page Back" data-tut="tour-page-back" onClick={() => pageBack()}>
                     <FaCaretLeft className="cursor-pointer" size={CARET_SIZE} />
                 </AccessibleCaret>
                 <p className="text-xl leading-[2.3em]" data-tut="tour-pagination">
                     <span aria-label="Page Number">{store.page}</span> / <span aria-label="Total Page Count">{store.pageCount}</span>
                 </p>
-                <AccessibleCaret data-tut="tour-page-forward" onClick={() => pageForward()}>
+                <AccessibleCaret data-tip="Page Forward" data-tut="tour-page-forward" onClick={() => pageForward()}>
                     <FaCaretRight className="cursor-pointer" size={CARET_SIZE} />
                 </AccessibleCaret>
             </div>
