@@ -19,7 +19,7 @@ const apiClientStore = proxy<APIClientStore>({
 })
 
 const initAPIClient = () => {
-    const token = import.meta.env.VITE_GH_TOKEN as string;
+    const token = import.meta.env.VITE_TOKEN_GITHUB as string;
 
     if(!!apiClientStore.client) {
         return;

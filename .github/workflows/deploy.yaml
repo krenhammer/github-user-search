@@ -26,7 +26,7 @@ jobs:
     - run: 'pnpm build'
     - uses: South-Paw/action-netlify-deploy@v1.2.0
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.VITE_TOKEN_GITHUB }}
         netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
         build-dir: './dist'
