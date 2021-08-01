@@ -32,7 +32,7 @@ Here is an overview of that process:
 
 
 ### Feature / Onboarding Tour
-Clicking the Tour Button Starts a Feature Tour
+Clicking the **Tour Button** (see below), starts a **Feature Tour**
 <p>
 <img src="./assets/TourButton.png" width="50">
 </p>
